@@ -35,11 +35,12 @@ export class AppService {
 
   //private currentFolderSource: BehaviorSubject<string> = new BehaviorSubject<string>("0");
   //currentFolderChange$ = this.currentFolderSource.asObservable();
-  //Home - http://192.168.0.101
-  private foldersUrl = 'http://172.16.9.2:3004/folders';  // URL to web API
-  private docmentsUrl = 'http://172.16.9.2:3004/documents';  // URL to web API
-  private journalsUrl = 'http://172.16.9.2:3004/journals';  // URL to web API
-  private entitiesUrl = 'http://172.16.9.2:3004/entities';  // URL to web API
+  //Home - http://192.168.0.101 work - http://172.16.9.2
+  private ip: string = 'http://192.168.0.100';
+  private foldersUrl = this.ip + ':3004/folders';  // URL to web API
+  private docmentsUrl = this.ip + ':3004/documents';  // URL to web API
+  private journalsUrl = this.ip + ':3004/journals';  // URL to web API
+  private entitiesUrl = this.ip + ':3004/entities';  // URL to web API
   
   private headers = new Headers({ 'Content-Type': 'application/json' });
   private options = new RequestOptions({ headers: this.headers });
