@@ -4,7 +4,7 @@ import {BreadCramber} from '../../model/breadcramber'
 
 @Component({
   moduleId: module.id,
-  selector: 'my-app',
+  selector: 'root-app',
   templateUrl: 'root.component.html',
   styleUrls:  ['root.component.css'],
 })
