@@ -10,7 +10,5 @@ export class WelcomeComponent implements OnInit {
 
   constructor(private auth: Auth) { }
 
-  ngOnInit() {
-  }
-
+  ngOnInit() { }
 }

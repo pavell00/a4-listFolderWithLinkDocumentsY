@@ -7,7 +7,9 @@
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#" (click)="auth.login()" *ngIf="!auth.authenticated()">Login</a></li>
         <li><a routerLink="/accountapp" *ngIf="auth.authenticated()">AccountApp</a></li>
-        <li><a routerLink="/profile" *ngIf="auth.authenticated()">Profile</a></li>
+        <li><a routerLink="/profile" *ngIf="auth.authenticated()">
+           <!--<img class="img-circle" style="width:10%" src="{{profile.picture}}" *ngIf="!profile.picture=='null'">-->
+          Profile</a></li>
         <li><a href="#" (click)="auth.logout()" *ngIf="auth.authenticated()">Logout</a></li>
       </ul>
     </div><!--/.nav-collapse -->

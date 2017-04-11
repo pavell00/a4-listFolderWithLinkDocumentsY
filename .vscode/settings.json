@@ -1,6 +1,6 @@
 {
   "editor.fontSize": 15,
-  "vsicons.presets.angular": true,
+  "vsicons.presets.angular": false,
   "files.exclude": {
     "**/.git": true,
     "**/.svn": true,
