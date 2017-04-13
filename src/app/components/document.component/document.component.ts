@@ -9,7 +9,8 @@ import {Subject} from 'rxjs/Subject';
 @Component({
     moduleId: module.id,
     selector: 'document',
-    templateUrl: 'document.component.html'
+    templateUrl: 'document.component.html',
+    styleUrls: ['document.component.css']
 })
 
 export class DocumentComponent implements OnInit {
@@ -72,5 +73,9 @@ export class DocumentComponent implements OnInit {
         //this.docs = this.documents.documentsOfFooler;
         //console.log(a);
         this.getAll();
+    }
+
+    rowStyle(rowData: any, rowIndex: number): string {
+        return rowData.isDone == 2 ? 'green-row-class' : 'red-row-class';
     }
 }

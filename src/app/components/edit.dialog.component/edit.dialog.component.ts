@@ -35,7 +35,7 @@ export class EditDialogComponent implements OnInit {
 
     onOpenDlgNew(){
         this.docIsNew = true;
-        this.document = new Document(1, "test", new Date().toLocaleDateString());
+        this.document = new Document(1, "test", new Date().toLocaleDateString(), 0);
         this.displayDialog = true;
     }
 

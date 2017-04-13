@@ -149,7 +149,16 @@ nav a.active {
     /*background-color: #ededed;*/
     border: 1px solid #aaa;
 }
-
+/*Настройка цвета строк в таблице документов*/
+.green-row-class {
+    background-color: #C1FFE1 !important;
+}
+.ui-datatable tbody > tr.ui-widget-content.ui-state-highlight {
+    background-color: #186ba0 !important;
+} 
+.red-row-class {
+    background-color: #FFE4E4 !important;
+}
 /* everywhere else */
 * {
   font-family: Arial, Helvetica, sans-serif;
