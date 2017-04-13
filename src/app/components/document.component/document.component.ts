@@ -9,8 +9,7 @@ import {Subject} from 'rxjs/Subject';
 @Component({
     moduleId: module.id,
     selector: 'document',
-    templateUrl: 'document.component.html',
-    styleUrls: ['document.component.css']
+    templateUrl: 'document.component.html'
 })
 
 export class DocumentComponent implements OnInit {
