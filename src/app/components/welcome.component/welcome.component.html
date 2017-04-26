@@ -2,7 +2,7 @@
   <div class="container">
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
-        <li><a routerLink="/">Home</a></li>
+        <li><a routerLink="/home" *ngIf="auth.authenticated()">Home</a></li>
         <li><calendar *ngIf="auth.authenticated()"></calendar></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -17,6 +17,4 @@
   </div>
 </nav>
 
-<div class="container">
-    <router-outlet></router-outlet>
-</div><!-- /.container -->
+<router-outlet></router-outlet>

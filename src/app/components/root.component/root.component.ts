@@ -16,15 +16,15 @@ export class RootComponent implements OnInit {
     checked: boolean = true;
     error: any;
     bCramb: BreadCramber[] = [];
-    
+
     constructor(private appService: AppService){ }
 
     ngOnInit(){
        /*this.appService.getCounter().subscribe(
             (v) => {this.counter = v;}
         )*/
-    }
-
+    }        
+    
     /*addValue(){
         let a = new BreadCramber(0, "cramber_1");
         let b = new BreadCramber(1, "cramber_2");

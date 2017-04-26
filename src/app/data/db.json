@@ -176,35 +176,35 @@
       "fldId": 1,
       "id": 1,
       "docName": "document 1",
-      "dateItem": "13.04.2017",
+      "dateItem": "24.04.2017",
       "isDone": 0
     },
     {
       "fldId": 2,
       "id": 2,
       "docName": "document 2",
-      "dateItem": "13.04.2017",
+      "dateItem": "24.04.2017",
       "isDone": 2
     },
     {
       "fldId": 3,
       "id": 3,
       "docName": "document 3",
-      "dateItem": "03.03.2017",
+      "dateItem": "13.04.2017",
       "isDone": 2
     },
     {
       "fldId": 4,
       "id": 4,
       "docName": "document 4",
-      "dateItem": "13.04.2017",
+      "dateItem": "24.04.2017",
       "isDone": 2
     },
     {
       "fldId": 1,
       "id": 5,
       "docName": "document 5",
-      "dateItem": "13.04.2017",
+      "dateItem": "24.04.2017",
       "isDone": 2
     },
     {
@@ -225,7 +225,7 @@
       "fldId": 3,
       "id": 8,
       "docName": "document 8",
-      "dateItem": "20.03.2017",
+      "dateItem": "24.04.2017",
       "isDone": 2
     },
     {
@@ -239,8 +239,22 @@
       "fldId": 1,
       "id": 10,
       "docName": "document 10",
-      "dateItem": "13.04.2017",
+      "dateItem": "24.04.2017",
       "isDone": 2
+    },
+    {
+      "fldId": 1,
+      "id": 11,
+      "docName": "document 11",
+      "dateItem": "24.04.2017",
+      "isDone": 0
+    },
+    {
+      "fldId": 1,
+      "id": 12,
+      "docName": "document 12",
+      "dateItem": "24.04.2017",
+      "isDone": 0
     }
   ],
   "folders": [

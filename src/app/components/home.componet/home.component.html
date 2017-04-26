@@ -1,0 +1,4 @@
+<div class="homedashboard">
+  <div class="alert alert-success" *ngIf="auth.authenticated()"> You are logged in</div>
+  <div class="alert alert-danger" *ngIf="!auth.authenticated()"> you are not logged</div>
+</div>
