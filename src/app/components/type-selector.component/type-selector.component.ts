@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter} from '@angular/core';
 import { SelectItem } from 'primeng/primeng';
 
 @Component({
@@ -11,6 +11,7 @@ export class TypeSelectorComponent implements OnInit {
 
     private ElementTypes: SelectItem[];
     private selectedType: SelectItem;
+    @Output() myEvent: EventEmitter<any> = new EventEmitter();
 
   constructor() { }
 
@@ -26,5 +27,6 @@ export class TypeSelectorComponent implements OnInit {
 
   onChangeDropDown(e: SelectItem){
     //console.log(e.value);
+    this.myEvent.emit(this.selectedType.value);
   }
 }

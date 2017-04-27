@@ -118,6 +118,7 @@ export class AppService {
     //console.log(this.currentFolder);
     let params = new URLSearchParams();
     params.set('rootId', String(this.f.id));
+    params.set('typeFolder', this.f.typeFolder);
     let a = this.http
         .get(this.foldersUrl, { search: params })
         .map(response => <Folder[]> response.json())

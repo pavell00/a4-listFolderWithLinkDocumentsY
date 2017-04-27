@@ -33,7 +33,7 @@ export class BreadCramberComponent implements OnInit {
             this.bcrambList.splice(index, size);
         }
         //this.appService.setCurfld(String(bcramb.rootId));
-        this.appService.setCurrentFolder(new Folder(bcramb.rootId, bcramb.name, true, 0));
+        this.appService.setCurrentFolder(new Folder(bcramb.rootId, bcramb.name, true, 0, 'Documents'));
         this.appService.searchFolder();
         //console.log(String(bcramb.id));
         //this.appService.searchFolderObserver("0").subscribe((val) => {this.error = val});;

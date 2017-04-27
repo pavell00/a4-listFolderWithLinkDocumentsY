@@ -1,5 +1,4 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-
 import { Folder, BreadCramber, Document } from '../../model/index';
 import { CalendarComponent }  from '../calendar.component/calendar.component';
 import { AppService } from '../../services/app.service';
@@ -15,7 +14,7 @@ export class FolderComponent implements OnInit {
     private folders: Folder[];
     private error: any;
     private bcrambFolders: BreadCramber[] = [];
-    documentsOfFooler : Document[];
+    documentsOfFolder : Document[];
 
     @Output() myEvent: EventEmitter<Folder> = new EventEmitter();
 
@@ -23,23 +22,24 @@ export class FolderComponent implements OnInit {
 
     ngOnInit() {
         //Initilize start folder ???
-        this.appService.setCurrentFolder(new Folder(0, "", false, 0));
+        this.appService.setCurrentFolder(new Folder(0, "", false, 0, 'Documents'));
         /*this.appService.searchFolderObserver("0").subscribe((val) => {this.folders = val});*/
         this.appService.searchFolder();
         this.appService.getFolders()
             .subscribe((val) => {this.folders = val});
         //this.appService.getCurfld().subscribe((val) => {this.error = val});
         this.appService.searchDocs2().subscribe(
-            (v) => {this.documentsOfFooler = v}
+            (v) => {this.documentsOfFolder = v}
         )        
     }
 
     onSelectFolder(folder :Folder){
+        console.log(folder);
       this.selectedFolder = folder;
       //this.appService.searchDocs(String(folder.id), String(this.dateValue.toLocaleDateString()))
       this.appService.setCurrentFolder(folder);
       this.appService.searchDocs2().subscribe(
-          (v) => {this.documentsOfFooler = v}
+          (v) => {this.documentsOfFolder = v}
       )
       this.myEvent.emit(this.selectedFolder);
       //this.appService.searchDocs4();
@@ -54,6 +54,10 @@ export class FolderComponent implements OnInit {
             this.bcrambFolders.push(new BreadCramber(folder.rootId, folder.name));
             this.appService.setBCramberObserver(this.bcrambFolders);
         }
+    }
+
+    onChangeFolderTypeFormTypeSelector(e: any){
+        console.log(e);
     }
 
     backFolder(){
