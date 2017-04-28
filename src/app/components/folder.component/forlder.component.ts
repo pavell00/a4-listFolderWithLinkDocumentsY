@@ -14,15 +14,17 @@ export class FolderComponent implements OnInit {
     private folders: Folder[];
     private error: any;
     private bcrambFolders: BreadCramber[] = [];
-    documentsOfFolder : Document[];
+    documentsOfFolder: Document[];
 
     @Output() myEvent: EventEmitter<Folder> = new EventEmitter();
 
     constructor(private appService: AppService) { }
 
-    ngOnInit() {
+    ngOnInit() { this.getAll('Documents'); }
+
+    getAll(typeSelector: string){
         //Initilize start folder ???
-        this.appService.setCurrentFolder(new Folder(0, "", false, 0, 'Documents'));
+        this.appService.setCurrentFolder(new Folder(0, "", false, 0, typeSelector));
         /*this.appService.searchFolderObserver("0").subscribe((val) => {this.folders = val});*/
         this.appService.searchFolder();
         this.appService.getFolders()
@@ -30,11 +32,11 @@ export class FolderComponent implements OnInit {
         //this.appService.getCurfld().subscribe((val) => {this.error = val});
         this.appService.searchDocs2().subscribe(
             (v) => {this.documentsOfFolder = v}
-        )        
+        )
     }
 
-    onSelectFolder(folder :Folder){
-        console.log(folder);
+    onSelectFolder(folder: Folder){
+      //console.log(folder);
       this.selectedFolder = folder;
       //this.appService.searchDocs(String(folder.id), String(this.dateValue.toLocaleDateString()))
       this.appService.setCurrentFolder(folder);
@@ -45,7 +47,7 @@ export class FolderComponent implements OnInit {
       //this.appService.searchDocs4();
     }
 
-    onDblClick(folder :Folder){
+    onDblClick(folder: Folder){
         if (folder.isChildren) {
             this.appService.setCurrentFolder(folder);
             this.appService.searchFolder();
@@ -56,8 +58,9 @@ export class FolderComponent implements OnInit {
         }
     }
 
-    onChangeFolderTypeFormTypeSelector(e: any){
-        console.log(e);
+    onChangeTypeSelector(e: string){
+        //console.log(e);
+        this.getAll(e);
     }
 
     backFolder(){

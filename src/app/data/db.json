@@ -176,14 +176,14 @@
       "fldId": 1,
       "id": 1,
       "docName": "document 1",
-      "dateItem": "27.04.2017",
+      "dateItem": "28.04.2017",
       "isDone": 0
     },
     {
       "fldId": 2,
       "id": 2,
       "docName": "document 2",
-      "dateItem": "27.04.2017",
+      "dateItem": "28.04.2017",
       "isDone": 2
     },
     {
@@ -197,14 +197,14 @@
       "fldId": 4,
       "id": 4,
       "docName": "document 4",
-      "dateItem": "27.04.2017",
+      "dateItem": "28.04.2017",
       "isDone": 2
     },
     {
       "fldId": 1,
       "id": 5,
       "docName": "document 5",
-      "dateItem": "27.04.2017",
+      "dateItem": "28.04.2017",
       "isDone": 2
     },
     {
@@ -225,7 +225,7 @@
       "fldId": 3,
       "id": 8,
       "docName": "document 8",
-      "dateItem": "27.04.2017",
+      "dateItem": "28.04.2017",
       "isDone": 2
     },
     {
@@ -239,21 +239,21 @@
       "fldId": 1,
       "id": 10,
       "docName": "document 10",
-      "dateItem": "27.04.2017",
+      "dateItem": "28.04.2017",
       "isDone": 2
     },
     {
       "fldId": 1,
       "id": 11,
       "docName": "document 11",
-      "dateItem": "27.04.2017",
+      "dateItem": "28.04.2017",
       "isDone": 0
     },
     {
       "fldId": 1,
       "id": 12,
       "docName": "document 12",
-      "dateItem": "27.04.2017",
+      "dateItem": "28.04.2017",
       "isDone": 0
     }
   ],
@@ -341,6 +341,55 @@
       "isChildren": false,
       "rootId": 2,
       "typeFolder": "Agents"
+    },
+    {
+      "id": 1,
+      "name": "Entities folder 1",
+      "isChildren": true,
+      "rootId": 0,
+      "typeFolder": "Entities"
+    },
+    {
+      "id": 2,
+      "name": "Entities folder 2",
+      "isChildren": false,
+      "rootId": 0,
+      "typeFolder": "Entities"
+    },
+    {
+      "id": 3,
+      "name": "Entities folder 1_1",
+      "isChildren": false,
+      "rootId": 1,
+      "typeFolder": "Entities"
+    },
+    {
+      "id": 1,
+      "name": "Others folder 1",
+      "isChildren": false,
+      "rootId": 0,
+      "typeFolder": "Others"
+    },
+    {
+      "id": 2,
+      "name": "Others folder 2",
+      "isChildren": false,
+      "rootId": 0,
+      "typeFolder": "Others"
+    },
+    {
+      "id": 1,
+      "name": "Templates folder 1",
+      "isChildren": false,
+      "rootId": 0,
+      "typeFolder": "Templates"
+    },
+    {
+      "id": 2,
+      "name": "Templates folder 2",
+      "isChildren": false,
+      "rootId": 0,
+      "typeFolder": "Templates"
     }
   ],
   "profile": {

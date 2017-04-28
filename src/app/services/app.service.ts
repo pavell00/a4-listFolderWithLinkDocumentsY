@@ -21,17 +21,19 @@ export class AppService {
   private journals = new Subject<Journal[]>();
   private entities = new Subject<Entity[]>();
   private calendar = new BehaviorSubject('23.03.2017');
-  
+  private typeSelector = new Subject<string>();
+
   private bcramberSource = new Subject<BreadCramber[]>();
   bcramberChange$ = this.bcramberSource.asObservable();
 
-  private countSource = new BehaviorSubject<number>(0);
+  /*private countSource = new BehaviorSubject<number>(0);
   getCounter(): Observable<number>{return this.countSource.asObservable();}
-  setCounter(n:number){this.countSource.next(n);}
+  setCounter(n:number){this.countSource.next(n);}*/
 
   private f:Folder;
   private currentFolderSource = new Subject<Folder>();
-  currentFolderChange$ = this.currentFolderSource.asObservable().subscribe((res) => {this.f = res});
+  currentFolderChange$ = this.currentFolderSource.asObservable().
+    subscribe((res) => {this.f = res});
 
   //private currentFolderSource: BehaviorSubject<string> = new BehaviorSubject<string>("0");
   //currentFolderChange$ = this.currentFolderSource.asObservable();
@@ -49,7 +51,7 @@ export class AppService {
   setCurrentFolder(f: Folder){this.currentFolderSource.next(f);}
   getCurrentFolder(){return this.currentFolderSource;}
   //getDocs() : Observable<Document[]> {return this.docs;}
-  
+
   setDocs(){this.searchDocs2().subscribe(v => {this.docs.next(v)})}
   getDocs() : Observable<Document[]> {
       this.searchDocs2().subscribe(
@@ -66,6 +68,9 @@ export class AppService {
 
   setBCramberObserver(b: BreadCramber[]){this.bcramberSource.next(b);}
   
+  getTypeSelector() : Observable<string> {return this.typeSelector.asObservable();}
+  setTypeSelector(s: string){this.typeSelector.next(s);}
+
   //setBCramber(s: BreadCramber){this.bcramberSource.push(s);}
   //getBCramber(){return this.bcramberSource;}
 

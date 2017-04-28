@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {AppService} from '../../services/app.service';
+import { AppService } from '../../services/app.service';
 
 @Component({
     moduleId: module.id,
@@ -24,6 +24,5 @@ export class CalendarComponent implements OnInit {
         //this.appService.searchDocs(String(this.selectedFolder.id | 0), String(this.dateValue.toLocaleDateString()))
         this.appService.setCalendar(String(this.dateValue.toLocaleDateString()));
         this.appService.searchDocs4();
-
     }
 }

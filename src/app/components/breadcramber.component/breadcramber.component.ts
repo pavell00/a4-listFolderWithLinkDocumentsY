@@ -1,20 +1,20 @@
-import { Component, OnInit } from '@angular/core';
-
-import {AppService} from '../../services/app.service';
-import { BreadCramber } from '../../model/breadcramber';
-import { Folder } from '../../model/index';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
+import { AppService } from '../../services/app.service';
+import { BreadCramber, Folder } from '../../model/index';
+//import { TypeSelectorComponent } from '../type-selector.component/type-selector.component';
 
 @Component({
     moduleId: module.id,
     selector: 'breadcramber',
     templateUrl: 'breadcramber.component.html',
     styleUrls:  ['breadcramber.component.css'],
-
 })
 
 export class BreadCramberComponent implements OnInit {
 
-    bcrambList: BreadCramber[];
+ //   @ViewChild(TypeSelectorComponent) private typeSelector : TypeSelectorComponent;
+    private bcrambList: BreadCramber[] = [];
+    private currentTypeSelector: string;
     error:any
 
     constructor(private appService: AppService) { }
@@ -23,6 +23,8 @@ export class BreadCramberComponent implements OnInit {
         this.appService.bcramberChange$.subscribe(
             (v) => {this.bcrambList = v}
         )
+        this.appService.getTypeSelector().subscribe(
+            (v) => {this.currentTypeSelector = v})
     }
 
     onClickBCramb(bcramb: BreadCramber){
@@ -33,9 +35,12 @@ export class BreadCramberComponent implements OnInit {
             this.bcrambList.splice(index, size);
         }
         //this.appService.setCurfld(String(bcramb.rootId));
-        this.appService.setCurrentFolder(new Folder(bcramb.rootId, bcramb.name, true, 0, 'Documents'));
+        //console.log('this.typeSelector '+ this.typeSelector);
+        this.appService.setCurrentFolder(new Folder(bcramb.rootId, bcramb.name, true, 0, this.currentTypeSelector));
         this.appService.searchFolder();
         //console.log(String(bcramb.id));
         //this.appService.searchFolderObserver("0").subscribe((val) => {this.error = val});;
     }
+
+    clearBCramb(){this.bcrambList.length = 0;}
 }
