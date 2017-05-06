@@ -24,33 +24,36 @@ export class FolderComponent implements OnInit {
 
     getAll(typeSelector: string){
         //Initilize start folder ???
-        this.appService.setCurrentFolder(new Folder(0, "", false, 0, typeSelector));
+        this.appService.setCurrentFolder(new Folder(0, "", false, 0, typeSelector, 0));
         /*this.appService.searchFolderObserver("0").subscribe((val) => {this.folders = val});*/
         this.appService.searchFolder();
         this.appService.getFolders()
             .subscribe((val) => {this.folders = val});
         //this.appService.getCurfld().subscribe((val) => {this.error = val});
-        this.appService.searchDocs2().subscribe(
+        /*this.appService.searchDocs2().subscribe(
             (v) => {this.documentsOfFolder = v}
-        )
+        )*/
     }
 
     onSelectFolder(folder: Folder){
-      //console.log(folder);
+      //console.log(JSON.stringify(folder));
       this.selectedFolder = folder;
       //this.appService.searchDocs(String(folder.id), String(this.dateValue.toLocaleDateString()))
       this.appService.setCurrentFolder(folder);
+      /*console.log('folder.component-onSelectFolder(this.appService.searchDocs2().subscribe)')
       this.appService.searchDocs2().subscribe(
           (v) => {this.documentsOfFolder = v}
-      )
+      )*/
       this.myEvent.emit(this.selectedFolder);
       //this.appService.searchDocs4();
     }
 
     onDblClick(folder: Folder){
         if (folder.isChildren) {
-            this.appService.setCurrentFolder(folder);
             this.appService.searchFolder();
+            /*this.appService.searchDocs2().subscribe(
+                    (v) => {this.documentsOfFolder = v}
+                )*/          
             //this.appService.searchFolderObserver(String(folder.id)).subscribe((val) => {this.folders = val});
             //add items to BreadCramber Array
             this.bcrambFolders.push(new BreadCramber(folder.rootId, folder.name));

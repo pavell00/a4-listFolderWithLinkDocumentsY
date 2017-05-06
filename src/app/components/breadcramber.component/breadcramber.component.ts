@@ -36,7 +36,7 @@ export class BreadCramberComponent implements OnInit {
         }
         //this.appService.setCurfld(String(bcramb.rootId));
         //console.log('this.typeSelector '+ this.typeSelector);
-        this.appService.setCurrentFolder(new Folder(bcramb.rootId, bcramb.name, true, 0, this.currentTypeSelector));
+        this.appService.setCurrentFolder(new Folder(bcramb.rootId, bcramb.name, true, 0, this.currentTypeSelector, 0));
         this.appService.searchFolder();
         //console.log(String(bcramb.id));
         //this.appService.searchFolderObserver("0").subscribe((val) => {this.error = val});;

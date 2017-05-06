@@ -14,6 +14,7 @@ export class EditDialogComponent implements OnInit {
 
     displayDialog: boolean;
     private docIsNew: boolean;
+    private formId: number;
 
     @Output() addDocEvent: EventEmitter<Document> = new EventEmitter();
 
@@ -29,6 +30,7 @@ export class EditDialogComponent implements OnInit {
     }
 
     onOpenDlg(){
+        this.formId = this.appService.getCurrentFolder().formId;
         this.docIsNew = false;
         this.displayDialog = true;
     }

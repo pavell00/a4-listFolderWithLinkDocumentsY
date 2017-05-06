@@ -49,7 +49,7 @@ export class AppService {
   constructor(private http: Http, private jsonp: Jsonp) {}
   
   setCurrentFolder(f: Folder){this.currentFolderSource.next(f);}
-  getCurrentFolder(){return this.currentFolderSource;}
+  getCurrentFolder(){return this.f;}//this.currentFolderSource;}
   //getDocs() : Observable<Document[]> {return this.docs;}
 
   setDocs(){this.searchDocs2().subscribe(v => {this.docs.next(v)})}
@@ -60,7 +60,7 @@ export class AppService {
       return this.docs;
   }
 
-  getFolders(): Observable<any> {return this.folders.asObservable();}
+  getFolders(): Observable<Folder[]> {return this.folders.asObservable();}
   getJournals(){return this.journals;}
 
   getCalendar() : Observable<any> {return this.calendar.asObservable();}
@@ -226,7 +226,7 @@ export class AppService {
   searchDocs2() : Observable<Document[]> {
      let term = String(this.f.id);
      let currentDate = this.calendar.getValue();//this.calendar;
-//     console.log('searchDocs2 ' +term);
+     console.log('searchDocs2 : term = ' + term + '; currentDate = '+ currentDate );
 //     console.log('searchDocs2 ' +currentDate);
      let params = new URLSearchParams();
      params.set('fldId', term);

@@ -32,11 +32,12 @@ export class DocumentComponent implements OnInit {
     constructor(private appService: AppService) { }
 
     ngOnInit() {
-        this.getAll();
+        //this.getAll();
         //this.getAll2();
     }
 
     getAll(){
+        //console.log('documents.component-getAll(this.appService.getDocs().subscribe)')
         this.appService.getDocs().subscribe(
             (val) => {this.docs = val})
 
@@ -76,5 +77,9 @@ export class DocumentComponent implements OnInit {
 
     rowStyle(rowData: any, rowIndex: number): string {
         return rowData.isDone == 2 ? 'green-row-class' : 'red-row-class';
+    }
+
+    onDCC(event: any){
+        console.log('onDCC()');
     }
 }
