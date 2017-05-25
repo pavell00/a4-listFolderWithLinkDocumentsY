@@ -18,11 +18,11 @@ export class TypeSelectorComponent implements OnInit {
 
   ngOnInit() {
         this.ElementTypes = [];
-        this.ElementTypes.push({label:'Documents', value:{id:1, name: 'Documents', code: 'DC'}});
-        this.ElementTypes.push({label:'Agents', value:{id:2, name: 'Agents', code: 'AG'}});
-        this.ElementTypes.push({label:'Entities', value:{id:3, name: 'Entities', code: 'EN'}});
-        this.ElementTypes.push({label:'Others', value:{id:4, name: 'Others', code: 'OT'}});
-        this.ElementTypes.push({label:'Templates', value:{id:5, name: 'Templates', code: 'TM'}});
+        this.ElementTypes.push({label:'Documents', value:{id:1, name: 'document_type', code: 'DC'}});
+        this.ElementTypes.push({label:'Agents', value:{id:2, name: 'agent_type', code: 'AG'}});
+        this.ElementTypes.push({label:'Entities', value:{id:3, name: 'entity_type', code: 'EN'}});
+        this.ElementTypes.push({label:'Others', value:{id:4, name: 'other_type', code: 'OT'}});
+        this.ElementTypes.push({label:'Templates', value:{id:5, name: 'template_type', code: 'TM'}});
         //set dedault value of type selector
         this.selectedType = this.ElementTypes[0];
         this.appService.setTypeSelector(this.selectedType.value.name);

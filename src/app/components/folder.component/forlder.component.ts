@@ -20,7 +20,7 @@ export class FolderComponent implements OnInit {
 
     constructor(private appService: AppService) { }
 
-    ngOnInit() { this.getAll('Documents'); }
+    ngOnInit() { this.getAll('document_type'); }
 
     getAll(typeSelector: string){
         //Initilize start folder ???

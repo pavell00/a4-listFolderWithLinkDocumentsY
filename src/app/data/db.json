@@ -1,5 +1,5 @@
 {
-  "entities": [
+  "entity_type": [
     {
       "entId": 1,
       "name": "entity milk 2.5 envelope"
@@ -270,7 +270,7 @@
       "name": "folder 1",
       "isChildren": true,
       "rootId": 0,
-      "typeFolder": "Documents",
+      "typeFolder": "document_type",
       "formId": 111
     },
     {
@@ -278,7 +278,7 @@
       "name": "folder 2",
       "isChildren": false,
       "rootId": 0,
-      "typeFolder": "Documents",
+      "typeFolder": "document_type",
       "formId": 112
     },
     {
@@ -286,7 +286,7 @@
       "name": "folder 3",
       "isChildren": true,
       "rootId": 0,
-      "typeFolder": "Documents",
+      "typeFolder": "document_type",
       "formId": "0"
     },
     {
@@ -294,7 +294,7 @@
       "name": "folder 1_1",
       "isChildren": true,
       "rootId": 1,
-      "typeFolder": "Documents",
+      "typeFolder": "document_type",
       "formId": "0"
     },
     {
@@ -302,7 +302,7 @@
       "name": "folder 1_2",
       "isChildren": false,
       "rootId": 1,
-      "typeFolder": "Documents",
+      "typeFolder": "document_type",
       "formId": "0"
     },
     {
@@ -310,7 +310,7 @@
       "name": "folder 1_1_1",
       "isChildren": false,
       "rootId": 4,
-      "typeFolder": "Documents",
+      "typeFolder": "document_type",
       "formId": "0"
     },
     {
@@ -318,7 +318,7 @@
       "name": "folder 3_1",
       "isChildren": false,
       "rootId": 3,
-      "typeFolder": "Documents",
+      "typeFolder": "document_type",
       "formId": "0"
     },
     {
@@ -326,7 +326,7 @@
       "name": "folder 3_2",
       "isChildren": false,
       "rootId": 3,
-      "typeFolder": "Documents",
+      "typeFolder": "document_type",
       "formId": "0"
     },
     {
@@ -334,7 +334,7 @@
       "name": "folder 4",
       "isChildren": false,
       "rootId": 0,
-      "typeFolder": "Documents",
+      "typeFolder": "document_type",
       "formId": "0"
     },
     {
@@ -342,7 +342,7 @@
       "name": "Agent folder 1",
       "isChildren": false,
       "rootId": 0,
-      "typeFolder": "Agents",
+      "typeFolder": "agent_type",
       "formId": "0"
     },
     {
@@ -350,7 +350,7 @@
       "name": "Agent folder 2",
       "isChildren": true,
       "rootId": 0,
-      "typeFolder": "Agents",
+      "typeFolder": "agent_type",
       "formId": "0"
     },
     {
@@ -358,63 +358,63 @@
       "name": "Agent folder 2_1",
       "isChildren": false,
       "rootId": 2,
-      "typeFolder": "Agents",
+      "typeFolder": "agent_type",
       "formId": "0"
     },
     {
       "id": 1,
-      "name": "Entities folder 1",
+      "name": "Entity folder 1",
       "isChildren": true,
       "rootId": 0,
-      "typeFolder": "Entities",
+      "typeFolder": "entity_type",
       "formId": "0"
     },
     {
       "id": 2,
-      "name": "Entities folder 2",
+      "name": "Entity folder 2",
       "isChildren": false,
       "rootId": 0,
-      "typeFolder": "Entities",
+      "typeFolder": "entity_type",
       "formId": "0"
     },
     {
       "id": 3,
-      "name": "Entities folder 1_1",
+      "name": "Entity folder 1_1",
       "isChildren": false,
       "rootId": 1,
-      "typeFolder": "Entities",
+      "typeFolder": "entity_type",
       "formId": "0"
     },
     {
       "id": 1,
-      "name": "Others folder 1",
+      "name": "Other folder 1",
       "isChildren": false,
       "rootId": 0,
-      "typeFolder": "Others",
+      "typeFolder": "other_type",
       "formId": "0"
     },
     {
       "id": 2,
-      "name": "Others folder 2",
+      "name": "Other folder 2",
       "isChildren": false,
       "rootId": 0,
-      "typeFolder": "Others",
+      "typeFolder": "other_type",
       "formId": "0"
     },
     {
       "id": 100,
-      "name": "Templates folder 1",
+      "name": "Template folder 1",
       "isChildren": false,
       "rootId": 0,
-      "typeFolder": "Templates",
+      "typeFolder": "template_type",
       "formId": "0"
     },
     {
       "id": 200,
-      "name": "Templates folder 2",
+      "name": "Template folder 2",
       "isChildren": false,
       "rootId": 0,
-      "typeFolder": "Templates",
+      "typeFolder": "template_type",
       "formId": "0"
     }
   ],
