@@ -21,7 +21,7 @@ export class AppService {
   private journals = new Subject<Journal[]>();
   private entities = new Subject<Entity[]>();
   private calendar = new BehaviorSubject('23.03.2017');
-  private typeSelector = new Subject<string>();
+  private typeSelector = new BehaviorSubject<string>('document_type');
 
   private bcramberSource = new Subject<BreadCramber[]>();
   bcramberChange$ = this.bcramberSource.asObservable();
@@ -30,23 +30,32 @@ export class AppService {
   getCounter(): Observable<number>{return this.countSource.asObservable();}
   setCounter(n:number){this.countSource.next(n);}*/
 
-  private f:Folder;
+  test_selector: string;
+  private ct: string;
+  private f: Folder;
   private currentFolderSource = new Subject<Folder>();
   currentFolderChange$ = this.currentFolderSource.asObservable().
     subscribe((res) => {this.f = res});
 
+  private currentTypeFolderSource = new Subject<string>();
+  currentTypeFolderChange$ = this.currentTypeFolderSource.asObservable().
+    subscribe((res) => {this.ct = res});
+
   //private currentFolderSource: BehaviorSubject<string> = new BehaviorSubject<string>("0");
   //currentFolderChange$ = this.currentFolderSource.asObservable();
   //Home - http://192.168.0.101
-  private foldersUrl = 'http://172.16.9.2:3004/folders';  // URL to web API
-  private docmentsUrl = 'http://172.16.9.2:3004/documents';  // URL to web API
-  private journalsUrl = 'http://172.16.9.2:3004/journals';  // URL to web API
-  private entitiesUrl = 'http://172.16.9.2:3004/entities';  // URL to web API
+  private IpHost = '172.16.9.2';  //
+  private portHost = '8080';      //3004
+  private sufix = '/search/findByRootIdAndTypeFolderOrderByName'; //''
+  private foldersUrl = 'http://'+ this.IpHost+ ':'+ this.portHost +'/folders';// +this.sufix;  // URL to web API
+  private docmentsUrl = 'http://'+ this.IpHost+ ':'+ this.portHost +'/documents' +this.sufix;  // URL to web API
+  private journalsUrl = 'http://'+ this.IpHost+ ':'+ this.portHost +'/journals' +this.sufix;  // URL to web API
+  private entitiesUrl = 'http://'+ this.IpHost+ ':'+ this.portHost +'/entities' +this.sufix;  // URL to web API
   
   private headers = new Headers({ 'Content-Type': 'application/json' });
   private options = new RequestOptions({ headers: this.headers });
 
-  constructor(private http: Http, private jsonp: Jsonp) {}
+  constructor(private http: Http, private jsonp: Jsonp) { }
   
   setCurrentFolder(f: Folder){this.currentFolderSource.next(f);}
   getCurrentFolder(){return this.f;}//this.currentFolderSource;}
@@ -68,7 +77,9 @@ export class AppService {
 
   setBCramberObserver(b: BreadCramber[]){this.bcramberSource.next(b);}
   
-  getTypeSelector() : Observable<string> {return this.typeSelector.asObservable();}
+  //setTypeSelector(c: string){this.currentTypeFolderSource.next(c);}
+  //getTypeSelector(){return this.ct;}
+  getTypeSelector(): Observable<string> {return this.typeSelector.asObservable();}
   setTypeSelector(s: string){this.typeSelector.next(s);}
 
   //setBCramber(s: BreadCramber){this.bcramberSource.push(s);}
@@ -120,16 +131,16 @@ export class AppService {
   }
 
   searchFolder () {
-    //console.log(this.currentFolder);
+    //console.log(this.f.id);
     let params = new URLSearchParams();
     params.set('rootId', String(this.f.id));
-    params.set('typeFolder', this.f.typeFolder);
+    params.set('typeFolder', 'document_type');
     let a = this.http
+        //.get(this.foldersUrl+'?rootId='+String(this.f.id)+'&typeFolder=document_type')
         .get(this.foldersUrl, { search: params })
         .map(response => <Folder[]> response.json())
             a.subscribe(
-                (val) => {this.folders.next(val);
-                },
+                (val) => {this.folders.next(val)},
                 (err) => (this.handleError)
             )
     //return a;
@@ -285,6 +296,13 @@ export class AppService {
 
   search2() : Promise<Document[]> {
       return this.http.get(this.docmentsUrl)
+            .toPromise()
+            .then(response => response.json().data)
+            .catch(this.handleError);
+  }
+
+  search2query() : Promise<Document[]> {
+      return this.http.get('http://172.16.9.2:3004/documents?dateItem>=12.05.2017')
             .toPromise()
             .then(response => response.json().data)
             .catch(this.handleError);

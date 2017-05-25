@@ -24,15 +24,11 @@ import { BreadCramberComponent } from './components/breadcramber.component/bread
 import { ProfileComponent } from './components/profile.component/profile.component'
 import { TypeSelectorComponent } from './components/type-selector.component/type-selector.component';
 import { HomeComponent } from './components/home.componet/home.component';
+import {InnerComponent} from './components/inner.component/inner.component'
 
 import { AppService } from './services/app.service';
 import {Auth} from './services/auth0.service'
 import {AuthGuard} from './auth.guard';
-
-
-
-
-
 
 @NgModule({
   imports:      [ BrowserModule, routing,
@@ -43,15 +39,18 @@ import {AuthGuard} from './auth.guard';
                   CalendarModule, DataTableModule, AutoCompleteModule,
                   ToolbarModule, SplitButtonModule, DialogModule, DropdownModule,
                   InputSwitchModule],
-  declarations: [ RootComponent, JournalComponent,
+  declarations: [ 
+                  RootComponent, JournalComponent,
                   DocumentComponent, FolderComponent,
                   CalendarComponent, AutoComplitEntityComponent,
                   EditDialogComponent, BreadCramberComponent, WelcomeComponent,
                   ProfileComponent,
                   HomeComponent,
-                  TypeSelectorComponent ],
+                  TypeSelectorComponent, InnerComponent
+                ],
   providers:    [ AppService, appRoutingProviders,
                   AUTH_PROVIDERS, Auth, AuthGuard ],                  
-  bootstrap:    [ WelcomeComponent ]
+  bootstrap:    [ WelcomeComponent ],
+  entryComponents: [InnerComponent]
 })
 export class AppModule { }
