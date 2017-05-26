@@ -27,13 +27,11 @@ export class TypeSelectorComponent implements OnInit {
         this.selectedType = this.ElementTypes[0];
         //console.log(this.selectedType.value.code);
         this.appService.setTypeSelector(this.selectedType.value.code);
-        this.appService.test_selector = this.selectedType.value.code;
   }
 
   onChangeDropDown(e: SelectItem){
     //console.log(e.value.code);
-    this.myEventTypeSelector.emit(e.value.name);
+    this.myEventTypeSelector.emit(e.value.code);
     this.appService.setTypeSelector(e.value.code);
-    this.appService.test_selector = e.value.code;
   }
 }

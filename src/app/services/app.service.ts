@@ -30,27 +30,20 @@ export class AppService {
   getCounter(): Observable<number>{return this.countSource.asObservable();}
   setCounter(n:number){this.countSource.next(n);}*/
 
-  test_selector: string;
-  private ct: string;
   private f: Folder;
   private currentFolderSource = new Subject<Folder>();
   currentFolderChange$ = this.currentFolderSource.asObservable().
     subscribe((res) => {this.f = res});
-
-  private currentTypeFolderSource = new Subject<string>();
-  currentTypeFolderChange$ = this.currentTypeFolderSource.asObservable().
-    subscribe((res) => {this.ct = res});
 
   //private currentFolderSource: BehaviorSubject<string> = new BehaviorSubject<string>("0");
   //currentFolderChange$ = this.currentFolderSource.asObservable();
   //Home - http://192.168.0.101
   private IpHost = '172.16.9.2';  //
   private portHost = '8080';      //3004
-  private sufix = '/search/findByRootIdAndTypeFolderOrderByName'; //''
-  private foldersUrl = 'http://'+ this.IpHost+ ':'+ this.portHost +'/folders';// +this.sufix;  // URL to web API
-  private docmentsUrl = 'http://'+ this.IpHost+ ':'+ this.portHost +'/documents' +this.sufix;  // URL to web API
-  private journalsUrl = 'http://'+ this.IpHost+ ':'+ this.portHost +'/journals' +this.sufix;  // URL to web API
-  private entitiesUrl = 'http://'+ this.IpHost+ ':'+ this.portHost +'/entities' +this.sufix;  // URL to web API
+  private foldersUrl = 'http://'+ this.IpHost+ ':'+ this.portHost +'/folders';
+  private docmentsUrl = 'http://'+ this.IpHost+ ':'+ this.portHost +'/documents';
+  private journalsUrl = 'http://'+ this.IpHost+ ':'+ this.portHost +'/journals';
+  private entitiesUrl = 'http://'+ this.IpHost+ ':'+ this.portHost +'/entities';
   
   private headers = new Headers({ 'Content-Type': 'application/json' });
   private options = new RequestOptions({ headers: this.headers });
@@ -131,10 +124,10 @@ export class AppService {
   }
 
   searchFolder () {
-    //console.log(this.f.id);
+    //console.log(this.f.typeFolder);
     let params = new URLSearchParams();
     params.set('rootId', String(this.f.id));
-    params.set('typeFolder', 'document_type');
+    params.set('typeFolder', this.f.typeFolder);
     let a = this.http
         //.get(this.foldersUrl+'?rootId='+String(this.f.id)+'&typeFolder=document_type')
         .get(this.foldersUrl, { search: params })
