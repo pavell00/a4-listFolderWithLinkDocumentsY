@@ -76,7 +76,7 @@ export class DocumentComponent implements OnInit {
     }
 
     rowStyle(rowData: any, rowIndex: number): string {
-        return rowData.isDone == 2 ? 'green-row-class' : 'red-row-class';
+        return rowData.docDone == 2 ? 'green-row-class' : 'red-row-class';
     }
 
     onDCC(event: any){

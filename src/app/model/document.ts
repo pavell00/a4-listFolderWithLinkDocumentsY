@@ -3,14 +3,14 @@ export class Document{
     id?: number;
     docName: string;
     dateItem: string;
-    isDone: number = 0;
+    docDone: number = 0;
 
     constructor(fldId: number, 
-                docName: string, dateItem: string, isDone: number, id?: number){
+                docName: string, dateItem: string, docDone: number, id?: number){
         this.fldId = fldId;
         this.id = id;
         this.docName = docName;
         this.dateItem = dateItem;
-        this.isDone = isDone;
+        this.docDone = docDone;
     }
 }
