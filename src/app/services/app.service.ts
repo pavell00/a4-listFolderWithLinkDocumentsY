@@ -63,6 +63,7 @@ export class AppService {
   }
 
   getFolders(): Observable<Folder[]> {return this.folders.asObservable();}
+
   getJournals(){return this.journals;}
 
   getCalendar() : Observable<any> {return this.calendar.asObservable();}
@@ -126,8 +127,8 @@ export class AppService {
   searchFolder () {
     //console.log(this.f.typeFolder);
     let params = new URLSearchParams();
-    params.set('rootId', String(this.f.id));
-    params.set('typeFolder', this.f.typeFolder);
+    params.set('rootid', String(this.f.id));
+    params.set('typefolder', this.f.typeFolder);
     let a = this.http
         //.get(this.foldersUrl+'?rootId='+String(this.f.id)+'&typeFolder=document_type')
         .get(this.foldersUrl, { search: params })
@@ -142,12 +143,13 @@ export class AppService {
   searchDocs4(): Observable<Document[]> {
      //console.log("curent folder "+ this.f.id);
      let term = String(this.f.id);
-     let currentDate = this.calendar.getValue();//this.calendar;
+     let curDate = this.calendar.getValue();//this.calendar;
+     let currentDate = curDate.substring(6,10)+'-'+curDate.substring(3,5)+'-'+curDate.substring(0,2);
      //console.log('searchDocs4 ' +term);
      //console.log('searchDocs4 ' +currentDate);
      let params = new URLSearchParams();
-     params.set('fldId', term);
-     params.set('dateItem', currentDate);
+     params.set('fldid', term);
+     params.set('docdate', currentDate);
      let a = this.http
         .get(this.docmentsUrl, { search: params })
         .map(response => <Document[]> response.json())
@@ -162,7 +164,7 @@ export class AppService {
 
   searchJournal (term: string) {
     let params = new URLSearchParams();
-    params.set('docId', term);
+    params.set('docid', term);
     let a = this.http
         .get(this.journalsUrl, { search: params })
         .map(response => <Journal[]> response.json())
@@ -229,12 +231,13 @@ export class AppService {
   // ??
   searchDocs2() : Observable<Document[]> {
      let term = String(this.f.id);
-     let currentDate = this.calendar.getValue();//this.calendar;
-     console.log('searchDocs2 : term = ' + term + '; currentDate = '+ currentDate );
+     let curDate = this.calendar.getValue();//this.calendar;
+     let currentDate = curDate.substring(6,10)+'-'+curDate.substring(3,5)+'-'+curDate.substring(0,2);
+     console.log('searchDocs2 : term = ' + term + '; currentDate = '+ curDate );
 //     console.log('searchDocs2 ' +currentDate);
      let params = new URLSearchParams();
-     params.set('fldId', term);
-     params.set('dateItem', currentDate);
+     params.set('docdate', currentDate);
+     params.set('fldid', term);
      return this.http
         .get(this.docmentsUrl, { search: params })
         .map(response => <Document[]> response.json())

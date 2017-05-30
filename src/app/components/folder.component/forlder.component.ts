@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { Folder, BreadCramber, Document } from '../../model/index';
 import { CalendarComponent }  from '../calendar.component/calendar.component';
 import { AppService } from '../../services/app.service';
@@ -66,8 +66,7 @@ export class FolderComponent implements OnInit {
         this.getAll(e);
     }
 
-    backFolder(){
-        //this.appService.searchFolder();
-        //this.appService.searchFolderObserver("0").subscribe((val) => {this.folders = val});
+    ngOnDestroy(){
+        
     }
 }
