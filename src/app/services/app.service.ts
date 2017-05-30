@@ -5,6 +5,7 @@ import { Headers, Http, Response,
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/distinctuntilchanged';
 
 import {Observable} from 'rxjs/Observable';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
@@ -56,7 +57,9 @@ export class AppService {
 
   setDocs(){this.searchDocs2().subscribe(v => {this.docs.next(v)})}
   getDocs() : Observable<Document[]> {
-      this.searchDocs2().subscribe(
+      this.searchDocs2()
+        .distinctUntilChanged()
+        .subscribe(
           v => {this.docs.next(v);}
       )
       return this.docs;
@@ -133,6 +136,7 @@ export class AppService {
         //.get(this.foldersUrl+'?rootId='+String(this.f.id)+'&typeFolder=document_type')
         .get(this.foldersUrl, { search: params })
         .map(response => <Folder[]> response.json())
+        .distinctUntilChanged()
             a.subscribe(
                 (val) => {this.folders.next(val)},
                 (err) => (this.handleError)
@@ -153,6 +157,7 @@ export class AppService {
      let a = this.http
         .get(this.docmentsUrl, { search: params })
         .map(response => <Document[]> response.json())
+        .distinctUntilChanged()
             a.subscribe(
                 (val) => {this.docs.next(val);//without filtering
                           //console.log(JSON.stringify(val))
@@ -168,6 +173,7 @@ export class AppService {
     let a = this.http
         .get(this.journalsUrl, { search: params })
         .map(response => <Journal[]> response.json())
+        .distinctUntilChanged()
             a.subscribe(
                 (val) => {this.journals.next(val);},//without filtering
                 (err) => (this.handleError)
