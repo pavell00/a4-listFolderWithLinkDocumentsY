@@ -1,19 +1,27 @@
 export class Journal{
     docId: number;
-    jid: number;
+    id: number;
     entName: string;
-    qty: number;
-    prc: number;
-    sum: number;
+    jQty: number;
+    jPrice: number;
+    jSum: number;
+    jTrNo: number;
+    jLnNo: number;
+    jEnt: number;
 
-    constructor(docId: number, jid: number,
-                entName: string, qty: number,
-                prc: number, sum: number){
+    constructor(docId: number, id: number,
+                entName: string, jQty: number,
+                jPrice: number, jSum: number,
+                jTrNo: number, jLnNo: number,
+                jEnt: number){
         this.docId = docId;
-        this.jid = jid;
+        this.id = id;
         this.entName = entName;
-        this.qty = qty;
-        this.prc = prc;
-        this.sum = sum;
+        this.jQty = jQty;
+        this.jPrice = jPrice;
+        this.jSum = jSum;
+        this.jTrNo = jTrNo;
+        this.jLnNo = jLnNo;
+        this.jEnt = jEnt;
     }    
 }
