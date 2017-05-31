@@ -41,7 +41,7 @@ export class AppService {
   //Home - http://192.168.0.101
   private IpHost = '172.16.9.2';  //
   private portHost = '8080';      //3004
-  private foldersUrl = 'http://'+ this.IpHost+ ':'+ this.portHost +'/folders';
+  private foldersUrl = 'http://'+ this.IpHost+ ':'+ this.portHost +'/sp_folders';
   private docmentsUrl = 'http://'+ this.IpHost+ ':'+ this.portHost +'/documents';
   private journalsUrl = 'http://'+ this.IpHost+ ':'+ this.portHost +'/journals';
   private entitiesUrl = 'http://'+ this.IpHost+ ':'+ this.portHost +'/entities';
