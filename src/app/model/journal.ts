@@ -8,12 +8,18 @@ export class Journal{
     jTrNo: number;
     jLnNo: number;
     jEnt: number;
+    jAg1: number;
+    jAg2: number;
+    jAg1name: string;
+    jAg2name: string;
 
     constructor(docId: number, id: number,
                 entName: string, jQty: number,
                 jPrice: number, jSum: number,
                 jTrNo: number, jLnNo: number,
-                jEnt: number){
+                jEnt: number, jAg1: number,
+                jAg2: number, jAg1name: string,
+                jAg2name: string){
         this.docId = docId;
         this.id = id;
         this.entName = entName;
@@ -23,5 +29,9 @@ export class Journal{
         this.jTrNo = jTrNo;
         this.jLnNo = jLnNo;
         this.jEnt = jEnt;
-    }    
+        this.jAg1 = jAg1;
+        this.jAg2 = jAg2;
+        this.jAg1_name = jAg1_name;
+        this.jAg2_name = jAg2_name;
+    }
 }

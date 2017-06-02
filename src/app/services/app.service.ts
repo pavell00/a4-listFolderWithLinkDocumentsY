@@ -42,8 +42,8 @@ export class AppService {
   private IpHost = '172.16.9.2';  //
   private portHost = '8080';      //3004
   private foldersUrl = 'http://'+ this.IpHost+ ':'+ this.portHost +'/sp_folders';
-  private docmentsUrl = 'http://'+ this.IpHost+ ':'+ this.portHost +'/documents';
-  private journalsUrl = 'http://'+ this.IpHost+ ':'+ this.portHost +'/journals';
+  private docmentsUrl = 'http://'+ this.IpHost+ ':'+ this.portHost +'/sp_documents';
+  private journalsUrl = 'http://'+ this.IpHost+ ':'+ this.portHost +'/sp_journals';
   private entitiesUrl = 'http://'+ this.IpHost+ ':'+ this.portHost +'/entities';
   
   private headers = new Headers({ 'Content-Type': 'application/json' });
@@ -152,8 +152,9 @@ export class AppService {
      //console.log('searchDocs4 ' +term);
      //console.log('searchDocs4 ' +currentDate);
      let params = new URLSearchParams();
-     params.set('fldid', term);
-     params.set('docdate', currentDate);
+     params.set('rootid', term);
+     params.set('startdate', currentDate);
+     params.set('enddate', currentDate);
      let a = this.http
         .get(this.docmentsUrl, { search: params })
         .map(response => <Document[]> response.json())
@@ -242,8 +243,9 @@ export class AppService {
      console.log('searchDocs2 : term = ' + term + '; currentDate = '+ curDate );
 //     console.log('searchDocs2 ' +currentDate);
      let params = new URLSearchParams();
-     params.set('docdate', currentDate);
-     params.set('fldid', term);
+     params.set('rootid', term);
+     params.set('startdate', currentDate);
+     params.set('enddate', currentDate);
      return this.http
         .get(this.docmentsUrl, { search: params })
         .map(response => <Document[]> response.json())
