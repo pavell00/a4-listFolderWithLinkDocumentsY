@@ -261,7 +261,7 @@ export class AppService {
                 a.subscribe(
                    (val) => {//this.docs.next(val);//without filtering
                              this.docs.next(
-                               val.filter(val => val.dateItem == currentDate) //with filtering
+                               val.filter(val => val.docDate == currentDate) //with filtering
                              );
                    },
                    (err) => (this.handleError)
@@ -281,7 +281,7 @@ export class AppService {
             a.subscribe(
                 (val) => {//this.docs.next(val);//without filtering
                     this.docs.next(
-                    val.filter(val => val.dateItem == currentDate) //with filtering
+                    val.filter(val => val.docDate == currentDate) //with filtering
                     );
                 },
                 (err) => (this.handleError)

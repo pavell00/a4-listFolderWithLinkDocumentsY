@@ -31,7 +31,7 @@ export class Journal{
         this.jEnt = jEnt;
         this.jAg1 = jAg1;
         this.jAg2 = jAg2;
-        this.jAg1_name = jAg1_name;
-        this.jAg2_name = jAg2_name;
+        this.jAg1name = jAg1name;
+        this.jAg2name = jAg2name;
     }
 }
