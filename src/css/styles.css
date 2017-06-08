@@ -54,6 +54,10 @@ nav a:hover {
   color: #039be5;
   background-color: #CFD8DC;
 }
+nav li:hover {
+  color: #039be5;
+  cursor: pointer;
+}
 nav a.active {
   color: #039be5;
 }
@@ -143,7 +147,6 @@ nav a.active {
 i {
     padding-left: 10px;
 }
-
 /*ui-g*/
 .error {color:red;}
 .ui-inputtext {
@@ -163,6 +166,15 @@ i {
 .red-row-class {
     background-color: #FFE4E4 !important;
 }
+
+/*.my > .ui-dialog > .ui-widget > .ui-widget-content > .ui-corner-all > .ui-shadow > .ui-dialog-draggable {
+    width: 300px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}*/
+
 /* everywhere else */
 * {
   font-family: Arial, Helvetica, sans-serif;

@@ -3,14 +3,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { HttpModule, JsonpModule } from '@angular/http';
-import {routing, appRoutingProviders} from './app.routing'
+import {routing, appRoutingProviders} from './app.routing';
 
 import { AppData } from './data/app.data';
-import {AUTH_PROVIDERS} from 'angular2-jwt'
+import {AUTH_PROVIDERS} from 'angular2-jwt';
 
 import { CalendarModule, DataTableModule, AutoCompleteModule,
         ToolbarModule, SplitButtonModule, DialogModule,
-        InputSwitchModule, DropdownModule } from 'primeng/primeng'
+        InputSwitchModule, DropdownModule, CheckboxModule, RadioButtonModule } from 'primeng/primeng';
 
 import { WelcomeComponent } from './components/welcome.component/welcome.component';
 import { RootComponent } from './components/root.component/root.component';
@@ -21,14 +21,16 @@ import { CalendarComponent } from './components/calendar.component/calendar.comp
 import { AutoComplitEntityComponent }  from './components/autocomplit.entity.component/autocomplit.entity.component';
 import { EditDialogComponent } from './components/edit.dialog.component/edit.dialog.component';
 import { BreadCramberComponent } from './components/breadcramber.component/breadcramber.component';
-import { ProfileComponent } from './components/profile.component/profile.component'
+import { ProfileComponent } from './components/profile.component/profile.component';
 import { TypeSelectorComponent } from './components/type-selector.component/type-selector.component';
 import { HomeComponent } from './components/home.componet/home.component';
-import {InnerComponent} from './components/inner.component/inner.component'
+import {InnerComponent} from './components/inner.component/inner.component';
+import { CalendarDlgComponent } from './components/calendar-dlg.component/calendar-dlg.component';
 
 import { AppService } from './services/app.service';
-import {Auth} from './services/auth0.service'
+import {Auth} from './services/auth0.service';
 import {AuthGuard} from './auth.guard';
+
 
 @NgModule({
   imports:      [ BrowserModule, routing,
@@ -38,7 +40,7 @@ import {AuthGuard} from './auth.guard';
                   JsonpModule,
                   CalendarModule, DataTableModule, AutoCompleteModule,
                   ToolbarModule, SplitButtonModule, DialogModule, DropdownModule,
-                  InputSwitchModule],
+                  InputSwitchModule, CheckboxModule, RadioButtonModule],
   declarations: [ 
                   RootComponent, JournalComponent,
                   DocumentComponent, FolderComponent,
@@ -46,7 +48,7 @@ import {AuthGuard} from './auth.guard';
                   EditDialogComponent, BreadCramberComponent, WelcomeComponent,
                   ProfileComponent,
                   HomeComponent,
-                  TypeSelectorComponent, InnerComponent
+                  TypeSelectorComponent, InnerComponent, CalendarDlgComponent
                 ],
   providers:    [ AppService, appRoutingProviders,
                   AUTH_PROVIDERS, Auth, AuthGuard ],                  

@@ -1,0 +1,36 @@
+<p-dialog [(visible)]="display" height=350 width=500>
+    <p-header>
+      Выберите период
+    </p-header>
+      <ul>
+        <li>текущий год <p-dropdown [options]="years" [(ngModel)]="selectedYear" [style]="{'width':'70px'}" appendTo="body"></p-dropdown></li>
+        <li>Месяц <p-radioButton name="groupname" value="Mounth" [(ngModel)]="selectedType"></p-radioButton>
+          <p-dropdown *ngIf="selectedType=='Mounth'" [options]="months" [(ngModel)]="selectedMonth" [style]="{'width':'95px'}" appendTo="body"></p-dropdown>
+        </li>
+        <li>Квартал <p-radioButton name="groupname" value="Quartal" [(ngModel)]="selectedType"></p-radioButton>
+          <p-dropdown *ngIf="selectedType=='Quartal'" [options]="quartals" [(ngModel)]="selectedQurtal" [style]="{'width':'95px'}" appendTo="body"></p-dropdown>
+        </li>
+        <li>Полугодие<p-radioButton name="groupname" value="Semiyear" [(ngModel)]="selectedType"></p-radioButton>
+          <p-dropdown *ngIf="selectedType=='Semiyear'" [options]="semiyears" [(ngModel)]="selectedSemiYear" [style]="{'width':'90px'}" appendTo="body"></p-dropdown>
+        </li>
+        <li>Месяцы<p-radioButton name="groupname" value="TwoMonth" [(ngModel)]="selectedType"></p-radioButton>
+          <p-calendar *ngIf="selectedType=='TwoMonth'" [(ngModel)]="startDate" (onSelect)="onSelectStartDate(startDate)"
+              dateFormat="dd.mm.yy" [showIcon]="true" 
+              [monthNavigator]="true" [yearNavigator]="true" yearRange="2000:2030" appendTo="body"> - 
+          </p-calendar>
+          <p-calendar *ngIf="selectedType=='TwoMonth'" [(ngModel)]="endDate" (onSelect)="onSelectEndDate(endDate)"
+              dateFormat="dd.mm.yy" [showIcon]="true" 
+              [monthNavigator]="true" [yearNavigator]="true" yearRange="2000:2030" appendTo="body">
+          </p-calendar>
+        </li>
+        <li>Все данные за текущий год</li>
+        <li>Все данные в базе</li>
+      </ul>
+    <p-footer>
+      <div class="ui-dialog-buttonpane ui-widget-content">
+        <button type="button" pButton icon="fa-close" (click)="display=false" label="No"></button>
+        <button type="button" pButton icon="fa-check" (click)="display=false; onOkClick()" label="Yes"></button>
+      </div>
+      {{selectedType}}
+    </p-footer>
+</p-dialog>
