@@ -17,12 +17,14 @@ export class CalendarComponent implements OnInit {
 
     ngOnInit() {
         //this.dateValue = new Date();
-        this.appService.setCalendar(String(this.dateValue.toLocaleDateString()));
+        this.appService.setCalendar(String(this.dateValue.toLocaleDateString()),
+                                    String(this.dateValue.toLocaleDateString()));
     }
 
     onSelectDate(value: Date){
-        //this.appService.searchDocs(String(this.selectedFolder.id | 0), String(this.dateValue.toLocaleDateString()))
-        this.appService.setCalendar(String(this.dateValue.toLocaleDateString()));
+    //this.appService.searchDocs(String(this.selectedFolder.id | 0), String(this.dateValue.toLocaleDateString()))
+        this.appService.setCalendar(String(this.dateValue.toLocaleDateString()),
+                                    String(this.dateValue.toLocaleDateString()));
         this.appService.searchDocs4();
     }
 }

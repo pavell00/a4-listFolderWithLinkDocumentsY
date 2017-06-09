@@ -147,6 +147,11 @@ nav a.active {
 i {
     padding-left: 10px;
 }
+
+/*.calendarDlg li {
+  margin:7px;
+}*/
+
 /*ui-g*/
 .error {color:red;}
 .ui-inputtext {

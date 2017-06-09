@@ -21,7 +21,9 @@ export class AppService {
   private folders = new Subject<Folder[]>();
   private journals = new Subject<Journal[]>();
   private entities = new Subject<Entity[]>();
-  private calendar = new BehaviorSubject('23.03.2017');
+  //private calendar = new BehaviorSubject('23.03.2017');
+  private calendarStartDt = new BehaviorSubject('23.03.2017');
+  private calendarEndDt = new BehaviorSubject('23.03.2017');
   private typeSelector = new BehaviorSubject<string>('document_type');
 
   private bcramberSource = new Subject<BreadCramber[]>();
@@ -69,8 +71,12 @@ export class AppService {
 
   getJournals(){return this.journals;}
 
-  getCalendar() : Observable<any> {return this.calendar.asObservable();}
-  setCalendar(s: string){this.calendar.next(s);}
+  //getCalendar() : Observable<any> {return this.calendar.asObservable();}
+  setCalendar(startDt: string, endDt: string){
+      //this.calendar.next(endDt);
+      this.calendarStartDt.next(startDt);
+      this.calendarEndDt.next(endDt);
+  }
 
   setBCramberObserver(b: BreadCramber[]){this.bcramberSource.next(b);}
   
@@ -147,14 +153,18 @@ export class AppService {
   searchDocs4(): Observable<Document[]> {
      //console.log("curent folder "+ this.f.id);
      let term = String(this.f.id);
-     let curDate = this.calendar.getValue();//this.calendar;
-     let currentDate = curDate.substring(6,10)+'-'+curDate.substring(3,5)+'-'+curDate.substring(0,2);
+     //let curDate = this.calendar.getValue();
+     let curStartDate = this.calendarStartDt.getValue();
+     let curEndDate = this.calendarEndDt.getValue();
+     console.log(curStartDate, curEndDate);
+     let currentStartDate = curStartDate.substring(6,10)+'-'+curStartDate.substring(3,5)+'-'+curStartDate.substring(0,2);
+     let currentEndDate = curEndDate.substring(6,10)+'-'+curEndDate.substring(3,5)+'-'+curEndDate.substring(0,2);
      //console.log('searchDocs4 ' +term);
-     //console.log('searchDocs4 ' +currentDate);
+     console.log('searchDocs4 ' +currentStartDate, currentEndDate);
      let params = new URLSearchParams();
      params.set('rootid', term);
-     params.set('startdate', currentDate);
-     params.set('enddate', currentDate);
+     params.set('startdate', currentStartDate);
+     params.set('enddate', currentEndDate);
      let a = this.http
         .get(this.docmentsUrl, { search: params })
         .map(response => <Document[]> response.json())
@@ -238,14 +248,17 @@ export class AppService {
   // ??
   searchDocs2() : Observable<Document[]> {
      let term = String(this.f.id);
-     let curDate = this.calendar.getValue();//this.calendar;
-     let currentDate = curDate.substring(6,10)+'-'+curDate.substring(3,5)+'-'+curDate.substring(0,2);
-     console.log('searchDocs2 : term = ' + term + '; currentDate = '+ curDate );
-//     console.log('searchDocs2 ' +currentDate);
+     //let curDate = this.calendar.getValue();//this.calendar;
+    let curStartDate = this.calendarStartDt.getValue();
+     let curEndDate = this.calendarEndDt.getValue();
+     let currentStartDate = curStartDate.substring(6,10)+'-'+curStartDate.substring(3,5)+'-'+curStartDate.substring(0,2);
+     let currentEndDate = curEndDate.substring(6,10)+'-'+curEndDate.substring(3,5)+'-'+curEndDate.substring(0,2);
+     console.log('searchDocs2 : term = ' + term + '; currentStartDate = '
+            + currentStartDate+'; currentEndDate = '+currentEndDate);
      let params = new URLSearchParams();
      params.set('rootid', term);
-     params.set('startdate', currentDate);
-     params.set('enddate', currentDate);
+     params.set('startdate', currentStartDate);
+     params.set('enddate', currentEndDate);
      return this.http
         .get(this.docmentsUrl, { search: params })
         .map(response => <Document[]> response.json())
