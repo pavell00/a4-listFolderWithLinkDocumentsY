@@ -11,7 +11,7 @@ import { AppService } from '../../services/app.service';
 export class CalendarDlgComponent implements OnInit {
 
   display: boolean = false;
-  years: SelectItem[];
+  years: SelectItem[] = [];
   months: SelectItem[] = [];
   quartals: SelectItem[] = [];
   semiyears: SelectItem[] = [];
@@ -23,9 +23,7 @@ export class CalendarDlgComponent implements OnInit {
   startDate: string;
   endDate: string;
 
-  constructor(private appService: AppService) {
-    this.years = [];
-  }
+  constructor(private appService: AppService) { }
 
   ngOnInit() {
     this.years.push({label: '2016', value: 2016});
