@@ -162,12 +162,20 @@ export class AppService {
      console.log(curStartDate, curEndDate);
      let currentStartDate = curStartDate.substring(6,10)+'-'+curStartDate.substring(3,5)+'-'+curStartDate.substring(0,2);
      let currentEndDate = curEndDate.substring(6,10)+'-'+curEndDate.substring(3,5)+'-'+curEndDate.substring(0,2);
+    let t: string;
+    this.getTypeSelector().subscribe(
+        (v) => {t = v},
+        (err) => (this.handleError),
+        () => true
+    );     
      //console.log('searchDocs4 ' +term);
      console.log('searchDocs4 ' +currentStartDate, currentEndDate);
      let params = new URLSearchParams();
      params.set('rootid', term);
      params.set('startdate', currentStartDate);
      params.set('enddate', currentEndDate);
+     params.set('typedir', t);
+     params.set('itemid', term);
      let a = this.http
         .get(this.docmentsUrl, { search: params })
         .map(response => <Document[]> response.json())
@@ -176,8 +184,9 @@ export class AppService {
                 (val) => {this.docs.next(val);//without filtering
                           //console.log(JSON.stringify(val))
                 },
-                (err) => (this.handleError)
-            )
+                (err) => (this.handleError),
+                () => true
+            );
      return a;
   }
 
@@ -250,19 +259,27 @@ export class AppService {
 
   // ??
   searchDocs2() : Observable<Document[]> {
-     let term = String(this.f.id);
-     //let curDate = this.calendar.getValue();//this.calendar;
+    let term = String(this.f.id);
+    //let curDate = this.calendar.getValue();//this.calendar;
     let curStartDate = this.calendarStartDt.getValue();
-     let curEndDate = this.calendarEndDt.getValue();
-     let currentStartDate = curStartDate.substring(6,10)+'-'+curStartDate.substring(3,5)+'-'+curStartDate.substring(0,2);
-     let currentEndDate = curEndDate.substring(6,10)+'-'+curEndDate.substring(3,5)+'-'+curEndDate.substring(0,2);
-     console.log('searchDocs2 : term = ' + term + '; currentStartDate = '
-            + currentStartDate+'; currentEndDate = '+currentEndDate);
-     let params = new URLSearchParams();
-     params.set('rootid', term);
-     params.set('startdate', currentStartDate);
-     params.set('enddate', currentEndDate);
-     return this.http
+    let curEndDate = this.calendarEndDt.getValue();
+    let currentStartDate = curStartDate.substring(6,10)+'-'+curStartDate.substring(3,5)+'-'+curStartDate.substring(0,2);
+    let currentEndDate = curEndDate.substring(6,10)+'-'+curEndDate.substring(3,5)+'-'+curEndDate.substring(0,2);
+    let t: string;
+    this.getTypeSelector().subscribe(
+        (v) => {t = v},
+        (err) => (this.handleError),
+        () => true
+    );
+    console.log('searchDocs2 : term = ' + term + '; currentStartDate = '
+            + currentStartDate+'; currentEndDate = '+currentEndDate+ '; type_selector= '+ t);
+    let params = new URLSearchParams();
+    params.set('rootid', term);
+    params.set('startdate', currentStartDate);
+    params.set('enddate', currentEndDate);
+    params.set('typedir', t);
+    params.set('itemid', term);
+    return this.http
         .get(this.docmentsUrl, { search: params })
         .map(response => <Document[]> response.json())
         .catch(this.handleError);
