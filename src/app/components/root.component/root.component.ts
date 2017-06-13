@@ -12,7 +12,8 @@ import {BreadCramber} from '../../model/breadcramber'
 export class RootComponent implements OnInit { 
 
     name = 'Angular CRUD'; 
-    sDate: string;
+    startDate: string;
+    endDate: string;
     checked: boolean = true;
     error: any;
     bCramb: BreadCramber[] = [];
@@ -23,6 +24,12 @@ export class RootComponent implements OnInit {
        /*this.appService.getCounter().subscribe(
             (v) => {this.counter = v;}
         )*/
+        this.appService.getCalendarSartDt().subscribe(
+            (v) => {this.startDate = v;}
+        )
+        this.appService.getCalendarEndDt().subscribe(
+            (v) => {this.endDate = v;}
+        )        
     }        
     
     /*addValue(){

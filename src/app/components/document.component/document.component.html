@@ -1,11 +1,13 @@
-<p-dataTable [value]="docs" selectionMode="single" 
+<p-dataTable [value]="docs" selectionMode="single" [multiSortMeta]="multiSortMeta"
              [(selection)]="selectedRow" 
              (onRowSelect)="onRowSelect($event)" 
              (onRowDblclick)="dialog.onOpenDlg()"
-             [paginator]="true" rows="10" [pageLinks]="5" [rowsPerPageOptions]="[5,10,20,50]"
+             [scrollable]="true" scrollHeight="400px" 
+             [totalRecords]="counter"
              [responsive]="true"
-             [rowStyleClass]="rowStyle">
-    <p-header>Содержимое папки {{counter}}</p-header>
+             [rowStyleClass]="rowStyle"
+             loading="true">
+    <p-header>Содержимое папки ({{counter}} документ,-а,-ов)</p-header>
     <p-column field="docDate" header="Дата" [sortable]="true"></p-column>
     <p-column field="docName" header="Наименование" [sortable]="true"></p-column>
     <p-column field="id" header="id" [sortable]="true"></p-column>
@@ -26,3 +28,10 @@
 <editDialog #dialog [document]="document" (addDocEvent)="onGetDocs($event)"></editDialog>
 <!--<editDialog [document]="document" [documentIsNew]="documentIsNew"></editDialog>
 {{eror}}-->
+<!--
+             [scrollable]="true" scrollHeight="400px" [lazy]="true"
+             [paginator]="true" rows="10" [pageLinks]="5" [rowsPerPageOptions]="[5,10,20,50]"
+             [totalRecords]="counter" (onLazyLoad)="loadDocsLazy($event)"
+
+             <p-column field="docDate" header="Дата" sortable="custom" (sortFunction)="mysort($event)"></p-column>
+    -->

@@ -22,8 +22,8 @@ export class AppService {
   private journals = new Subject<Journal[]>();
   private entities = new Subject<Entity[]>();
   //private calendar = new BehaviorSubject('23.03.2017');
-  private calendarStartDt = new BehaviorSubject('23.03.2017');
-  private calendarEndDt = new BehaviorSubject('23.03.2017');
+  private calendarStartDt = new BehaviorSubject(new Date().toLocaleDateString());
+  private calendarEndDt = new BehaviorSubject(new Date().toLocaleDateString()); //'23.03.2017'
   private typeSelector = new BehaviorSubject<string>('document_type');
 
   private bcramberSource = new Subject<BreadCramber[]>();
@@ -77,6 +77,9 @@ export class AppService {
       this.calendarStartDt.next(startDt);
       this.calendarEndDt.next(endDt);
   }
+
+  getCalendarSartDt(): Observable<string> { return this.calendarStartDt.asObservable(); }
+  getCalendarEndDt(): Observable<string> { return this.calendarEndDt.asObservable(); }
 
   setBCramberObserver(b: BreadCramber[]){this.bcramberSource.next(b);}
   
@@ -284,7 +287,7 @@ export class AppService {
 
   searchDocs3 () {
       let term = String(this.f.id);
-      let currentDate = this.calendar.getValue();
+      let currentDate = this.calendarStartDt.getValue();
       let params = new URLSearchParams();
       params.set('fldId', term);
 

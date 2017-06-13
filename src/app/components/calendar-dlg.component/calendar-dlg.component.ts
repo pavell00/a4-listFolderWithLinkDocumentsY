@@ -22,7 +22,7 @@ export class CalendarDlgComponent implements OnInit {
   selectedType: string;
   startDate: string;
   endDate: string;
-
+  
   constructor(private appService: AppService) { }
 
   ngOnInit() {
