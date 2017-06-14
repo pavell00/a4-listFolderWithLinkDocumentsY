@@ -175,7 +175,6 @@ export class AppService {
      params.set('startdate', currentStartDate);
      params.set('enddate', currentEndDate);
      params.set('typedir', t);
-     params.set('itemid', term);
      let a = this.http
         .get(this.docmentsUrl, { search: params })
         .map(response => <Document[]> response.json())
@@ -278,7 +277,6 @@ export class AppService {
     params.set('startdate', currentStartDate);
     params.set('enddate', currentEndDate);
     params.set('typedir', t);
-    params.set('itemid', term);
     return this.http
         .get(this.docmentsUrl, { search: params })
         .map(response => <Document[]> response.json())
