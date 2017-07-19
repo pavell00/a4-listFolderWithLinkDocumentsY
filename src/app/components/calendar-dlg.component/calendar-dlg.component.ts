@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInitd } from '@angular/core';
 import { SelectItem } from 'primeng/primeng';
 import { AppService } from '../../services/app.service';
+import {FolderComponent} from '../folder.component/forlder.component'
 
 @Component({
   moduleId: module.id,

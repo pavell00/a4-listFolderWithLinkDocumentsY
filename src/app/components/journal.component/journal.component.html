@@ -9,6 +9,11 @@
         [(selection)]="selectedRow" (onRowSelect)="onRowSelect($event)" 
         [paginator]="true" rows="15" [responsive]="true">
     <p-header>Содержимое документа</p-header>
+    <p-column header="№ п/п" [style]="{'width':'35px'}">
+        <ng-template let-i="rowIndex" pTemplate="body">
+            {{i+1}}
+        </ng-template>
+    </p-column>
     <p-column field="jAg1name" header="Кому" [sortable]="true"></p-column>
     <p-column field="jAg2name" header="Кто" [sortable]="true"></p-column>
     <p-column field="entName" header="Name" [sortable]="true"></p-column>

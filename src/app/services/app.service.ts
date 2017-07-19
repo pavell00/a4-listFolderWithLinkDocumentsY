@@ -46,7 +46,7 @@ export class AppService {
   private foldersUrl = 'http://'+ this.IpHost+ ':'+ this.portHost +'/sp_folders';
   private docmentsUrl = 'http://'+ this.IpHost+ ':'+ this.portHost +'/sp_documents';
   private journalsUrl = 'http://'+ this.IpHost+ ':'+ this.portHost +'/sp_journals';
-  private entitiesUrl = 'http://'+ this.IpHost+ ':'+ this.portHost +'/entities';
+  private entitiesUrl = 'http://'+ this.IpHost+ ':'+ this.portHost +'/sp_entities';
   
   private headers = new Headers({ 'Content-Type': 'application/json' });
   private options = new RequestOptions({ headers: this.headers });
@@ -59,10 +59,10 @@ export class AppService {
 
   setDocs(){this.searchDocs2().subscribe(v => {this.docs.next(v)})}
   getDocs() : Observable<Document[]> {
-      this.searchDocs2()
-        .distinctUntilChanged()
-        .subscribe(
-          v => {this.docs.next(v);}
+        this.searchDocs2()
+            .distinctUntilChanged()
+            .subscribe(
+            v => {this.docs.next(v);}
       )
       return this.docs;
   }
