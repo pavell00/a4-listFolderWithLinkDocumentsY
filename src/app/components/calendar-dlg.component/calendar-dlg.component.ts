@@ -1,7 +1,6 @@
-import { Component, OnInitd } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SelectItem } from 'primeng/primeng';
 import { AppService } from '../../services/app.service';
-import {FolderComponent} from '../folder.component/forlder.component'
 
 @Component({
   moduleId: module.id,
@@ -11,18 +10,18 @@ import {FolderComponent} from '../folder.component/forlder.component'
 })
 export class CalendarDlgComponent implements OnInit {
 
-  display: boolean = false;
-  years: SelectItem[] = [];
-  months: SelectItem[] = [];
-  quartals: SelectItem[] = [];
-  semiyears: SelectItem[] = [];
-  selectedYear: number;
-  selectedMonth: number;
-  selectedQurtal: string;
-  selectedSemiYear: string;
-  selectedType: string;
-  startDate: string;
-  endDate: string;
+  private display: boolean = false;
+  private years: SelectItem[] = [];
+  private months: SelectItem[] = [];
+  private quartals: SelectItem[] = [];
+  private semiyears: SelectItem[] = [];
+  private selectedYear: number;
+  private selectedMonth: number;
+  private selectedQurtal: string;
+  private selectedSemiYear: string;
+  private selectedType: string;
+  private startDate: string;
+  private endDate: string;
   
   constructor(private appService: AppService) { }
 

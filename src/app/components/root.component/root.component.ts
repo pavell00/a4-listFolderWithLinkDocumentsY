@@ -11,12 +11,11 @@ import {BreadCramber} from '../../model/breadcramber'
 
 export class RootComponent implements OnInit { 
 
-    name = 'Angular CRUD'; 
-    startDate: string;
-    endDate: string;
-    checked: boolean = true;
-    error: any;
-    bCramb: BreadCramber[] = [];
+    private startDate: string;
+    private endDate: string;
+    private checked: boolean = true;
+    private error: any;
+
 
     constructor(private appService: AppService){ }
 
@@ -32,11 +31,4 @@ export class RootComponent implements OnInit {
         )        
     }        
     
-    /*addValue(){
-        let a = new BreadCramber(0, "cramber_1");
-        let b = new BreadCramber(1, "cramber_2");
-        this.bCramb.push(a);
-        this.bCramb.push(b);
-        this.appService.setBCramberObserver(this.bCramb);
-    }*/
 }

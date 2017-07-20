@@ -1,8 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { Document } from '../../model/index';
-//import { EditDialogComponent } from '../edit.dialog.component/edit.dialog.component';
-//import { FolderComponent } from '../folder.component/forlder.component';
 import {AppService} from '../../services/app.service';
 import {Subject} from 'rxjs/Subject';
 
@@ -14,17 +12,14 @@ import {Subject} from 'rxjs/Subject';
 
 export class DocumentComponent implements OnInit {
 
-    //@Input() documents: FolderComponent;
-
-    displayDialog: boolean;
-    document: Document;
-    documentIsNew: boolean;
+    private displayDialog: boolean;
+    private document: Document;
+    private documentIsNew: boolean;
 
     private documentSource: Subject<Document> = new Subject<Document>();
-    documentSelect$ = this.documentSource.asObservable();
+    private documentSelect$ = this.documentSource.asObservable();
 
     private selectedRow: Document;
-    //selectedDocument: Document;
     private docs: Document[];
     private error: any;
     private counter: number = 0;
@@ -39,9 +34,9 @@ export class DocumentComponent implements OnInit {
 
     getAll(){
         //console.log('documents.component-getAll(this.appService.getDocs().subscribe)')
-        this.appService.getDocs().subscribe(
+         this.appService.getDocs().subscribe(
             (val) => {this.docs = val;
-                    this.counter = this.docs.length;})
+                    this.counter = this.docs.length;}) 
 
         this.documentSelect$.subscribe(
             (v) => {this.document = v;}

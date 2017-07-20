@@ -7,9 +7,9 @@
 
     <div class="ui-g" align="center" *ngIf="checked">
         <div class="ui-g-2 ui-md-2 ui-lg-2">
-            <type-selector (myEventTypeSelector)="fld.onChangeTypeSelector($event); bcr.clearBCramb()"></type-selector>
+            <type-selector (EventTypeSelector)="fld.onChangeTypeSelector($event); bcr.clearBCramb()"></type-selector>
             <br />
-            <folder #fld (myEvent)="doc.onGetDocs($event)"></folder>
+            <folder #fld (EventFolderClick)="doc.onGetDocs($event)"></folder>
         </div>
         <div class="ui-g-4 ui-md-4 ui-lg-4">
             <document #doc></document>
@@ -21,7 +21,7 @@
 
     <div class="ui-g" align="center" *ngIf="!checked">
         <div class="ui-g-2 ui-md-2 ui-lg-2">
-            <folder (myEvent)="doc.onGetDocs($event)"></folder>
+            <folder (EventFolderClick)="doc.onGetDocs($event)"></folder>
         </div>
         <div class="ui-g-10 ui-md-10 ui-lg-10">
             <document #doc></document>

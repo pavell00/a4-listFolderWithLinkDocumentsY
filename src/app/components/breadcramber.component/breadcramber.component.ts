@@ -1,7 +1,6 @@
-import { Component, OnInit, ViewChild, Input } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { AppService } from '../../services/app.service';
 import { BreadCramber, Folder } from '../../model/index';
-//import { TypeSelectorComponent } from '../type-selector.component/type-selector.component';
 
 @Component({
     moduleId: module.id,
@@ -12,10 +11,9 @@ import { BreadCramber, Folder } from '../../model/index';
 
 export class BreadCramberComponent implements OnInit {
 
- //   @ViewChild(TypeSelectorComponent) private typeSelector : TypeSelectorComponent;
     private bcrambList: BreadCramber[] = [];
     private currentTypeSelector: string;
-    error:any
+    private error: any
 
     constructor(private appService: AppService) { }
 

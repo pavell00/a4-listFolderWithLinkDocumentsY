@@ -58,14 +58,16 @@ export class AppService {
   //getDocs() : Observable<Document[]> {return this.docs;}
 
   setDocs(){this.searchDocs2().subscribe(v => {this.docs.next(v)})}
-  getDocs() : Observable<Document[]> {
+   getDocs() : Observable<Document[]> {
         this.searchDocs2()
             .distinctUntilChanged()
             .subscribe(
             v => {this.docs.next(v);}
       )
       return this.docs;
-  }
+  } 
+    
+  //getDocs(){ return this.docs;}
 
   getFolders(): Observable<Folder[]> {return this.folders.asObservable();}
 
@@ -152,6 +154,34 @@ export class AppService {
             )
     //return a;
   }
+
+    searchDocs2() : Observable<Document[]> {
+        //this.docs.next(null);
+        let term = String(this.f.id);
+        //let curDate = this.calendar.getValue();//this.calendar;
+        let curStartDate = this.calendarStartDt.getValue();
+        let curEndDate = this.calendarEndDt.getValue();
+        let currentStartDate = curStartDate.substring(6,10)+'-'+curStartDate.substring(3,5)+'-'+curStartDate.substring(0,2);
+        let currentEndDate = curEndDate.substring(6,10)+'-'+curEndDate.substring(3,5)+'-'+curEndDate.substring(0,2);
+        let t: string;
+        this.getTypeSelector().subscribe(
+            (v) => {t = v},
+            (err) => (this.handleError),
+            () => true
+        );
+        console.log('searchDocs2 : term = ' + term + '; currentStartDate = '
+                + currentStartDate+'; currentEndDate = '+currentEndDate+ '; type_selector= '+ t);
+        let params = new URLSearchParams();
+        params.set('rootid', term);
+        params.set('startdate', currentStartDate);
+        params.set('enddate', currentEndDate);
+        params.set('typedir', t);
+        return this.http
+            .get(this.docmentsUrl, { search: params })
+            .map(response => <Document[]> response.json())
+            //.map(response => this.docs.next(response))
+            .catch(this.handleError);
+    }
 
   searchDocs4(): Observable<Document[]> {
      //console.log("curent folder "+ this.f.id);
@@ -255,33 +285,6 @@ export class AppService {
         .map(this.extractData)
         .catch(this.handleError);
     }
-
-  // ??
-  searchDocs2() : Observable<Document[]> {
-    let term = String(this.f.id);
-    //let curDate = this.calendar.getValue();//this.calendar;
-    let curStartDate = this.calendarStartDt.getValue();
-    let curEndDate = this.calendarEndDt.getValue();
-    let currentStartDate = curStartDate.substring(6,10)+'-'+curStartDate.substring(3,5)+'-'+curStartDate.substring(0,2);
-    let currentEndDate = curEndDate.substring(6,10)+'-'+curEndDate.substring(3,5)+'-'+curEndDate.substring(0,2);
-    let t: string;
-    this.getTypeSelector().subscribe(
-        (v) => {t = v},
-        (err) => (this.handleError),
-        () => true
-    );
-    console.log('searchDocs2 : term = ' + term + '; currentStartDate = '
-            + currentStartDate+'; currentEndDate = '+currentEndDate+ '; type_selector= '+ t);
-    let params = new URLSearchParams();
-    params.set('rootid', term);
-    params.set('startdate', currentStartDate);
-    params.set('enddate', currentEndDate);
-    params.set('typedir', t);
-    return this.http
-        .get(this.docmentsUrl, { search: params })
-        .map(response => <Document[]> response.json())
-        .catch(this.handleError);
-  }
 
   searchDocs (term: string, currentDate: string) {
       let params = new URLSearchParams();

@@ -1,6 +1,5 @@
 import { Component, OnInit, Output, EventEmitter, OnDestroy } from '@angular/core';
-import { Folder, BreadCramber, Document } from '../../model/index';
-import { CalendarComponent }  from '../calendar.component/calendar.component';
+import { Folder, BreadCramber } from '../../model/index';
 import { AppService } from '../../services/app.service';
 
 @Component({
@@ -14,9 +13,8 @@ export class FolderComponent implements OnInit {
     private folders: Folder[];
     private error: any;
     private bcrambFolders: BreadCramber[] = [];
-    documentsOfFolder: Document[];
 
-    @Output() myEvent: EventEmitter<Folder> = new EventEmitter();
+    @Output() EventFolderClick: EventEmitter<Folder> = new EventEmitter();
 
     constructor(private appService: AppService) { }
 
@@ -44,7 +42,7 @@ export class FolderComponent implements OnInit {
       this.appService.searchDocs2().subscribe(
           (v) => {this.documentsOfFolder = v}
       )*/
-      this.myEvent.emit(this.selectedFolder);
+      this.EventFolderClick.emit(this.selectedFolder);
       //this.appService.searchDocs4();
     }
 

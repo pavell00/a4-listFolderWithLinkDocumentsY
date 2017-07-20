@@ -12,7 +12,7 @@ export class TypeSelectorComponent implements OnInit {
 
     private ElementTypes: SelectItem[];
     private selectedType: SelectItem;
-    @Output() myEventTypeSelector: EventEmitter<any> = new EventEmitter();
+    @Output() EventTypeSelector: EventEmitter<any> = new EventEmitter();
 
   constructor(private appService: AppService) { }
 
@@ -32,7 +32,7 @@ export class TypeSelectorComponent implements OnInit {
 
   onChangeDropDown(e: SelectItem){
     //console.log(e.value.code);
-    this.myEventTypeSelector.emit(e.value.code);
+    this.EventTypeSelector.emit(e.value.code);
     this.appService.setTypeSelector(e.value.code);
   }
 }
